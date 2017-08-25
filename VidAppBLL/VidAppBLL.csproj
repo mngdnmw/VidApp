@@ -33,6 +33,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BLLFacade.cs" />
     <Compile Include="IVidService.cs" />
+    <Compile Include="Services\VideoService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VidAppBE\VidAppBE.csproj">
@@ -43,6 +44,9 @@
       <Project>{F7AB3AC2-CD94-4230-93AE-36E0FA9D5E23}</Project>
       <Name>VidAppDAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

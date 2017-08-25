@@ -8,13 +8,13 @@ namespace VidAppBLL
     {
 
         //C
-        Video Creat(Video vid);
+        Video Create(Video vid);
         //R
         List<Video> GetAll();
-        Video get(int id);
+        Video Get(int id);
         //U
         Video Update(Video vid);
         //D
-        bool Delete(int id);
+        Video Delete(int id);
     }
 }
