@@ -28,7 +28,10 @@ namespace VidAppUI
                 Genre = "Documentary2",
             };
 
-            bllFac.VidService.Create(vid1);
+            //Use of method to get the service
+            //bllFac.GetVidService().Create(vid1);
+
+            //Use of property - more widely used in .Net, so will use this one 
             bllFac.VidService.Create(vid2);
 
             List<string> menuItems = new List<string> { "Create video", "Read videos", "Update video", "Delete video", "Search", "Exit" };
@@ -131,9 +134,13 @@ namespace VidAppUI
 
             var videoFound = FindVidByID();
             if (videoFound != null)
+            {
                 bllFac.VidService.Delete(videoFound.Id);
-            else
-                Console.WriteLine("Video not found");
+            }
+
+            //Use of turnary - if the videoFound is null then it will do the thing straight after the question mark
+            var response = videoFound == null ? "Video not found" : "Video deleted";
+            Console.WriteLine(response);
         }
 
         private static Video FindVidByID()

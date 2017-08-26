@@ -6,7 +6,6 @@ namespace VidAppBLL
 {
     public interface IVidService
     {
-
         //C
         Video Create(Video vid);
         //R

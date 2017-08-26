@@ -31,13 +31,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FakeDB.cs" />
+    <Compile Include="IVidRepo.cs" />
+    <Compile Include="Repositories\VidRepoFakeDB.cs" />
+    <Compile Include="DALFacade.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VidAppBE\VidAppBE.csproj">
       <Project>{A57C4DF1-3B61-4493-8CAB-B4BE9DB69716}</Project>
       <Name>VidAppBE</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repositories\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
