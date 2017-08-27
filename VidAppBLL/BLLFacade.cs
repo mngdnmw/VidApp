@@ -17,7 +17,7 @@ namespace VidAppBLL
         {
             get
             {
-                return new VideoService(new DALFacade().VidRepo);
+                return new VideoService(new DALFacade());
             }
         }
     }

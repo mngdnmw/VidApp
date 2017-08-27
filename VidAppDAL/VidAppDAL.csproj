@@ -88,6 +88,8 @@
     <Compile Include="DALFacade.cs" />
     <Compile Include="Repositories\VidRepoEFMemory.cs" />
     <Compile Include="Context\InMemoryContext.cs" />
+    <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="UOW\UnitOfWorkMem.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VidAppBE\VidAppBE.csproj">
@@ -98,6 +100,7 @@
   <ItemGroup>
     <Folder Include="Repositories\" />
     <Folder Include="Context\" />
+    <Folder Include="UOW\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

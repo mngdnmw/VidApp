@@ -20,7 +20,6 @@ namespace VidAppDAL.Repositories
         {
             //Adds the vid to the Videos table
             _context.Videos.Add(vid);
-            _context.SaveChanges();
             return vid;
         }
 
@@ -28,7 +27,6 @@ namespace VidAppDAL.Repositories
         {
             var vid = Get(id);
             _context.Videos.Remove(vid);
-            _context.SaveChanges();
             return vid;
         }
 

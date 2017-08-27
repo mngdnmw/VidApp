@@ -124,6 +124,8 @@ namespace VidAppUI
                 Console.WriteLine("Genre: ");
                 videoFound.Genre = Console.ReadLine();
                 Console.WriteLine("Video edited!");
+
+				bllFac.VidService.Update(videoFound);
             }
             else
                 Console.WriteLine("Video not found");

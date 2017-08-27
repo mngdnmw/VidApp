@@ -8,46 +8,69 @@ namespace VidAppBLL.Services
 {
     public class VideoService : IVidService
     {
-        IVidRepo repo;
+        DALFacade DALFac;
 
-        public VideoService(IVidRepo repo){
+        public VideoService(DALFacade DALFac){
 
-            this.repo = repo;
+            this.DALFac = DALFac;
         }
        
         public Video Create(Video vid)
         {
-            return repo.Create(vid);
+            //Will automatically call the dispose function at the end
+            using (var uow = DALFac.UOW){
+                var newVid = uow.VidRepo.Create(vid);
+                uow.Complete();
+                return newVid;
+            }
         }
 
         public Video Delete(int Id)
         {
-            return repo.Delete(Id);
+			using (var uow = DALFac.UOW)
+			{
+                var newVid = uow.VidRepo.Delete(Id);
+				uow.Complete();
+				return newVid;
+			}
         }
 
         public Video Get(int Id)
         {
-            return repo.Get(Id);
+			using (var uow = DALFac.UOW)
+			{
+                return uow.VidRepo.Get(Id);
+				
+			}
         }
 
         public List<Video> GetAll()
         {
-            return repo.GetAll();
+			using (var uow = DALFac.UOW)
+			{
+				return uow.VidRepo.GetAll();
+
+			}
         }
 
         public Video Update(Video vid)
         {
-            var vidFromDB = Get(vid.Id);
-            if (vidFromDB == null)
+            using (var uow = DALFac.UOW)
             {
-                throw new InvalidOperationException("Video not found");
+                var vidFromDB = uow.VidRepo.Get(vid.Id);
+                if (vidFromDB == null)
+                {
+                    throw new InvalidOperationException("Video not found");
+                }
+
+				vidFromDB.Name = vid.Name;
+				vidFromDB.Director = vid.Director;
+				vidFromDB.Genre = vid.Genre;
+                uow.Complete();
+				return vidFromDB;
             }
 
-            vidFromDB.Name = vid.Name;
-            vidFromDB.Director = vid.Director;
-            vidFromDB.Genre = vid.Genre;
-
-            return vidFromDB;
+           
 
         }
     }
