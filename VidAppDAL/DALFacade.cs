@@ -7,7 +7,7 @@ namespace VidAppDAL
     {
         public IVidRepo VidRepo
         {
-            get { return new VidRepoFakeDB(); }
+            get { return new VidRepoEFMemory(new Context.InMemoryContext()); }
         }
     }
 }
