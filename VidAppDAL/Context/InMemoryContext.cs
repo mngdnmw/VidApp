@@ -1,6 +1,5 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using VidAppBE;
+﻿using Microsoft.EntityFrameworkCore;
+using VidAppDAL.Entities;
 
 namespace VidAppDAL.Context
 {

@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using VidAppBE;
+﻿using System.Collections.Generic;
+using VidAppDAL.Entities;
 
 namespace VidAppDAL
 {

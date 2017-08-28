@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using VidAppBE;
+using VidAppDAL.Entities;
 
 namespace VidAppDAL.Repositories
 {
@@ -22,7 +21,7 @@ namespace VidAppDAL.Repositories
 				Id = Id++,
 				Name = vid.Name,
 				Director = vid.Director,
-				Genre = vid.Genre
+				
 			});
 
 			return newVid;

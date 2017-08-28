@@ -34,12 +34,9 @@
     <Compile Include="BLLFacade.cs" />
     <Compile Include="IVidService.cs" />
     <Compile Include="Services\VideoService.cs" />
+    <Compile Include="BusinessObjects\VideoBO.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VidAppBE\VidAppBE.csproj">
-      <Project>{A57C4DF1-3B61-4493-8CAB-B4BE9DB69716}</Project>
-      <Name>VidAppBE</Name>
-    </ProjectReference>
     <ProjectReference Include="..\VidAppDAL\VidAppDAL.csproj">
       <Project>{F7AB3AC2-CD94-4230-93AE-36E0FA9D5E23}</Project>
       <Name>VidAppDAL</Name>
@@ -47,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
+    <Folder Include="BusinessObjects\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

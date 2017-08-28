@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using VidAppBE;
 using VidAppDAL.Context;
+using VidAppDAL.Entities;
 
 namespace VidAppDAL.Repositories
 {

@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using VidAppBE;
+using System.Collections.Generic;
+using VidAppBLL.BusinessObjects;
 using VidAppDAL;
+using VidAppDAL.Entities;
 
 namespace VidAppBLL.Services
 {
@@ -10,50 +11,54 @@ namespace VidAppBLL.Services
     {
         DALFacade DALFac;
 
-        public VideoService(DALFacade DALFac){
+        public VideoService(DALFacade DALFac)
+        {
 
             this.DALFac = DALFac;
         }
-       
-        public Video Create(Video vid)
+
+        public VideoBO Create(VideoBO vid)
         {
             //Will automatically call the dispose function at the end
-            using (var uow = DALFac.UOW){
-                var newVid = uow.VidRepo.Create(vid);
+            using (var uow = DALFac.UOW)
+            {
+                var newVid = uow.VidRepo.Create(Convert(vid));
                 uow.Complete();
-                return newVid;
+                return Convert(newVid);
             }
         }
 
-        public Video Delete(int Id)
+        public VideoBO Delete(int Id)
         {
-			using (var uow = DALFac.UOW)
-			{
+            using (var uow = DALFac.UOW)
+            {
                 var newVid = uow.VidRepo.Delete(Id);
-				uow.Complete();
-				return newVid;
-			}
+                uow.Complete();
+                return Convert(newVid);
+            }
         }
 
-        public Video Get(int Id)
+        public VideoBO Get(int Id)
         {
-			using (var uow = DALFac.UOW)
-			{
-                return uow.VidRepo.Get(Id);
-				
-			}
+            using (var uow = DALFac.UOW)
+            {
+                return Convert(uow.VidRepo.Get(Id));
+
+            }
         }
 
-        public List<Video> GetAll()
+        public List<VideoBO> GetAll()
         {
-			using (var uow = DALFac.UOW)
-			{
-				return uow.VidRepo.GetAll();
+            using (var uow = DALFac.UOW)
+            {
+                //Grabs each video in the vidRepo and converts each of them and returns a list
+				//return uow.VidRepo.GetAll().Select(v => Convert(v)).ToList();
+                return uow.VidRepo.GetAll().Select(Convert).ToList();
 
 			}
         }
 
-        public Video Update(Video vid)
+        public VideoBO Update(VideoBO vid)
         {
             using (var uow = DALFac.UOW)
             {
@@ -63,15 +68,41 @@ namespace VidAppBLL.Services
                     throw new InvalidOperationException("Video not found");
                 }
 
-				vidFromDB.Name = vid.Name;
-				vidFromDB.Director = vid.Director;
-				vidFromDB.Genre = vid.Genre;
+                vidFromDB.Name = vid.Name;
+                vidFromDB.Director = vid.Director;
+                vidFromDB.Duration = vid.Duration;
                 uow.Complete();
-				return vidFromDB;
+                return Convert(vidFromDB);
             }
 
-           
+        }
+
+        private Video Convert(VideoBO vid)
+        {
+            return new Video()
+            {
+                Id = vid.Id,
+                Name = vid.Name,
+                Director = vid.Director,
+				Duration = vid.Duration
+            };
 
         }
+
+
+		private VideoBO Convert(Video vid)
+		{
+			return new VideoBO()
+			{
+				Id = vid.Id,
+				Name = vid.Name,
+				Director = vid.Director,
+                Duration = vid.Duration
+                              
+			};
+
+		}
     }
 }
+
+

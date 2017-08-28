@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VidAppBLL", "VidAppBLL\VidA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VidAppDAL", "VidAppDAL\VidAppDAL.csproj", "{F7AB3AC2-CD94-4230-93AE-36E0FA9D5E23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VidAppBE", "VidAppBE\VidAppBE.csproj", "{A57C4DF1-3B61-4493-8CAB-B4BE9DB69716}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -27,9 +25,5 @@ Global
 		{F7AB3AC2-CD94-4230-93AE-36E0FA9D5E23}.Debug|x86.Build.0 = Debug|Any CPU
 		{F7AB3AC2-CD94-4230-93AE-36E0FA9D5E23}.Release|x86.ActiveCfg = Release|Any CPU
 		{F7AB3AC2-CD94-4230-93AE-36E0FA9D5E23}.Release|x86.Build.0 = Release|Any CPU
-		{A57C4DF1-3B61-4493-8CAB-B4BE9DB69716}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{A57C4DF1-3B61-4493-8CAB-B4BE9DB69716}.Debug|x86.Build.0 = Debug|Any CPU
-		{A57C4DF1-3B61-4493-8CAB-B4BE9DB69716}.Release|x86.ActiveCfg = Release|Any CPU
-		{A57C4DF1-3B61-4493-8CAB-B4BE9DB69716}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

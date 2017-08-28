@@ -36,10 +36,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VidAppBE\VidAppBE.csproj">
-      <Project>{A57C4DF1-3B61-4493-8CAB-B4BE9DB69716}</Project>
-      <Name>VidAppBE</Name>
-    </ProjectReference>
     <ProjectReference Include="..\VidAppBLL\VidAppBLL.csproj">
       <Project>{634D5BE5-69C5-4DC8-A8C6-2A35EDF627FC}</Project>
       <Name>VidAppBLL</Name>

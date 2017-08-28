@@ -1,19 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using VidAppBE;
+﻿using System.Collections.Generic;
+using VidAppBLL.BusinessObjects;
 
 namespace VidAppBLL
 {
     public interface IVidService
     {
         //C
-        Video Create(Video vid);
+        VideoBO Create(VideoBO vid);
         //R
-        List<Video> GetAll();
-        Video Get(int id);
+        List<VideoBO> GetAll();
+        VideoBO Get(int id);
         //U
-        Video Update(Video vid);
+        VideoBO Update(VideoBO vid);
         //D
-        Video Delete(int id);
+        VideoBO Delete(int id);
     }
 }

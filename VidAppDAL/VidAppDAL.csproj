@@ -90,17 +90,13 @@
     <Compile Include="Context\InMemoryContext.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="UOW\UnitOfWorkMem.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\VidAppBE\VidAppBE.csproj">
-      <Project>{A57C4DF1-3B61-4493-8CAB-B4BE9DB69716}</Project>
-      <Name>VidAppBE</Name>
-    </ProjectReference>
+    <Compile Include="Entities\Video.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\" />
     <Folder Include="Context\" />
     <Folder Include="UOW\" />
+    <Folder Include="Entities\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using VidAppBE;
 using VidAppBLL;
+using VidAppBLL.BusinessObjects;
 
 namespace VidAppUI
 {
@@ -14,18 +14,18 @@ namespace VidAppUI
 
             Introduction();
 
-            var vid1 = new Video()
+            var vid1 = new VideoBO()
             {
                 Name = "Movie",
                 Director = "This guy",
-                Genre = "Documentary",
+                Duration = 12312
             };
 
-            var vid2 = new Video()
+            var vid2 = new VideoBO()
             {
                 Name = "Movie2",
                 Director = "This guy2",
-                Genre = "Documentary2",
+                Duration = 12312
             };
 
             //Use of method to get the service
@@ -107,7 +107,7 @@ namespace VidAppUI
         {
             var video = FindVidByID();
             if (video != null)
-                Console.WriteLine($"ID: {video.Id} Name: {video.Name} Director: {video.Director} Genre: {video.Genre}");
+                Console.WriteLine($"ID: {video.Id} Name: {video.Name} Director: {video.Director} Duration: {video.DurationInString}");
             else
                 Console.WriteLine($"That video ID does not exist");
         }
@@ -121,11 +121,15 @@ namespace VidAppUI
                 videoFound.Name = Console.ReadLine();
                 Console.WriteLine("Director: ");
                 videoFound.Director = Console.ReadLine();
-                Console.WriteLine("Genre: ");
-                videoFound.Genre = Console.ReadLine();
+                Console.WriteLine("Duration(minutes): ");
+                int duration;
+				while (!int.TryParse(Console.ReadLine(), out duration))
+				{
+					Console.WriteLine("Please insert a number");
+				}
                 Console.WriteLine("Video edited!");
 
-				bllFac.VidService.Update(videoFound);
+                bllFac.VidService.Update(videoFound);
             }
             else
                 Console.WriteLine("Video not found");
@@ -145,7 +149,7 @@ namespace VidAppUI
             Console.WriteLine(response);
         }
 
-        private static Video FindVidByID()
+        private static VideoBO FindVidByID()
         {
             Console.WriteLine("Insert video ID: ");
 
@@ -167,15 +171,17 @@ namespace VidAppUI
             var name = Console.ReadLine();
             Console.WriteLine("Director: ");
             var director = Console.ReadLine();
-            Console.WriteLine("Genre: ");
-            var genre = Console.ReadLine();
+			int duration;
+			while (!int.TryParse(Console.ReadLine(), out duration))
+			{
+				Console.WriteLine("Please insert a number");
+			}
             Console.WriteLine("Video successfully added!");
-
-            bllFac.VidService.Create(new Video()
+            bllFac.VidService.Create(new VideoBO()
             {
                 Name = name,
                 Director = director,
-                Genre = genre,
+                Duration = duration
             });
 
         }
@@ -185,7 +191,7 @@ namespace VidAppUI
             Console.WriteLine("List of movies");
             foreach (var video in bllFac.VidService.GetAll())
             {
-                Console.WriteLine($"ID: {video.Id} Name: {video.Name} Director: {video.Director} Genre: {video.Genre}");
+                Console.WriteLine($"ID: {video.Id} Name: {video.Name} Director: {video.Director} Duration: {video.DurationInString}");
             }
 
 
